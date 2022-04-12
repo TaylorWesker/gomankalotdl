@@ -81,13 +81,13 @@ func main() {
 	fmt.Println(links)
 	fmt.Println(title)
 	os.Chdir("download")
-	os.Mkdir(title, 755)
+	os.Mkdir(title, 0755)
 	os.Chdir(title)
 	for _, l := range links {
 		l2 := strings.Split(l, "-")
 		folder_name := l2[len(l2)-1]
 		fmt.Println(folder_name)
-		os.Mkdir(folder_name, 755)
+		os.Mkdir(folder_name, 0755)
 		os.Chdir(folder_name)
 		u, _ := url.Parse(link_page)
 		downloadAllImageaPage("https://" + u.Host + l)
