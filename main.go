@@ -68,7 +68,9 @@ func getTitleAndAllChapterLinkPage(link string) (string, []string) {
 
 func main() {
 	var link_page string
+	outdir := "download"
 	flag.StringVar(&link_page, "link", "", "the link to the manga main page")
+	flag.StringVar(&outdir, "o", "", "output directory")
 
 	flag.Parse()
 
@@ -80,7 +82,7 @@ func main() {
 	title, links := getTitleAndAllChapterLinkPage(link_page)
 	fmt.Println(links)
 	fmt.Println(title)
-	os.Chdir("download")
+	os.Chdir(outdir)
 	os.Mkdir(title, 0755)
 	os.Chdir(title)
 	for _, l := range links {
